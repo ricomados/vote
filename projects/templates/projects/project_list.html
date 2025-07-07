@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block title %}프로젝트 목록{% endblock %}
+
+{% block content %}
+<h1 class="mb-4">프로젝트 목록</h1>
+
+{% if projects %}
+<div class="row row-cols-1 row-cols-md-3 g-4">
+  {% for p in projects %}
+  <div class="col">
+    <div class="card h-100 shadow-sm">
+      <div class="card-body">
+        <h5 class="card-title">{{ p.title }}</h5>
+        <p class="card-text mb-2">
+          <i class="bi bi-star-fill text-warning"></i>
+          {{ p.avg|default:0|floatformat:1 }}점 · {{ p.votes.count }}표
+        </p>
+        <a href="{% url 'projects:detail' p.pk %}" class="btn btn-primary btn-sm">자세히</a>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+{% else %}
+<p>등록된 프로젝트가 없습니다.</p>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block title %}투표 결과{% endblock %}
+
+{% block content %}
+<h1 class="mb-3">투표 결과</h1>
+<p><strong>{{ project.title }}</strong> 의 현재 평균 점수는 <span class="badge bg-success">{{ avg }}</span> 입니다.</p>
+<p>총 투표 수: {{ total }} 표</p>
+<a href="{% url 'projects:list' %}" class="btn btn-primary mt-3">목록으로 돌아가기</a>
+{% endblock %} 
